@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.0'
 gem 'activesupport', '5.2.0'
+gem 'rails', '5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '1.3.13'
 # Use Puma as the app server
@@ -40,12 +41,16 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '3.6.2'
   gem 'listen', '3.0.5'
+  gem 'web-console', '3.6.2'
+
+  # Let's try and have some coding standards in here, eh?
+  gem 'rubocop'
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '1.7.2'
   gem 'spring-watcher-listen', '2.0.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', '~>1.2017.0', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', '~>1.2017.0', platforms: %i[mingw mswin x64_mingw jruby]
