@@ -98,7 +98,7 @@ GEM
     passenger (5.2.3)
       rack
       rake (>= 0.8.1)
-    puma (3.7.0)
+    puma (3.12.4)
     rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -216,7 +216,7 @@ DEPENDENCIES
   jquery-rails (= 4.3.3)
   listen (= 3.0.5)
   passenger (= 5.2.3)
-  puma (= 3.7)
+  puma (= 3.12.4)
   rails (= 5.2.0)
   rspec-rails (= 3.7.2)
   rubocop
