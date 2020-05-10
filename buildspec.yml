@@ -3,7 +3,8 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      ruby: 2.6
+      nodejs: 12
+      ruby: 2.7
     commands:
       # Upgrade AWS CLI to the latest version
       - pip3 install --upgrade awscli
@@ -14,6 +15,9 @@ phases:
       # Install Ruby dependencies from the Gemfile.
       - bundle install
 
+      # Install Node dependencies from package.json
+      - yarn
+
   pre_build:
     commands:
       # Set the SECRET_KEY_BASE environment variable for running tests
@@ -22,6 +26,9 @@ phases:
       # Run the tests using RSpec.
       - bundle exec rspec
 
+      # Add Yarn
+      - npm i -g npm
+      - npm i -g yarn
   post_build:
     commands:
       - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template-file template-export.yml
