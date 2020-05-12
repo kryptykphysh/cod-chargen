@@ -1,0 +1,32 @@
+FROM ruby:2.7
+LABEL maintainer=kryptykphysh@kryptykphysh.xyz
+
+ARG SECRET_KEY_BASE
+ENV BUNDLE_PATH /gems
+ENV RAILS_ENV production
+ENV RAILS_LOG_TO_STDOUT true
+ENV NODE_ENV production
+ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+  && curl -sS https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+  && echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list \
+  && apt-get update -yqq \
+  && apt-get install -yqq --no-install-recommends \
+  apt-transport-https \
+  nodejs \
+  postgresql-client-12 \
+  yarn \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+COPY ./Gemfile* /usr/src/app/
+WORKDIR /usr/src/app
+RUN gem update --system \
+  && gem install bundler \
+  && bundle config set without 'development test' \
+  && bundle install
+COPY . /usr/src/app/
+RUN yarn install --check-files \
+  && bin/rails assets:precompile
+CMD ["bin/rails", "s", "-b", "0.0.0.0", "-e", "production", "-p", "80"]
