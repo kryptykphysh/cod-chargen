@@ -114,4 +114,7 @@ Rails.application.configure do
 
   # Required by Devise
   config.action_mailer.default_url_options = { host: 'cod-chargen.kryptykphysh.uk', port: 80 }
+
+  # Because we don't have secrets.yml in source control
+  config.secret_key_base = ENV['SECRET_KEY_BASE']
 end

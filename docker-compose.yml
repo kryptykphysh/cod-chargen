@@ -1,38 +1,3 @@
 version: "3"
 services:
-  database:
-    env_file:
-      - .env/development/database
-    image: postgres:12
-    ports:
-      - "5432:5432"
-    volumes:
-      - db_data:/var/lib/postgresql/data
   web:
-    build: .
-    command:
-      [
-        "/wait/wait-for-postgres.sh",
-        "database",
-        "bin/rails",
-        "s",
-        "-b",
-        "0.0.0.0"
-      ]
-    depends_on:
-      - database
-    env_file:
-      - .env/development/database
-      - .env/development/web
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/usr/src/app
-      - gem_cache:/gems
-      - ./wait_scripts:/wait
-      # You can't share the tmp volume over two different machines
-      # - web_tmp:/usr/src/app/tmp
-volumes:
-  db_data:
-  gem_cache:
-  web_tmp:

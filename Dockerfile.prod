@@ -4,7 +4,6 @@ LABEL maintainer=kryptykphysh@kryptykphysh.xyz
 ARG SECRET_KEY_BASE
 ENV BUNDLE_PATH /gems
 ENV RAILS_ENV production
-ENV RAILS_LOG_TO_STDOUT true
 ENV NODE_ENV production
 ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
 
