@@ -5,6 +5,9 @@
 # Logs
 log/*
 
+# Node modules
+node_modules/*
+
 # Temp files
 tmp/*
 
