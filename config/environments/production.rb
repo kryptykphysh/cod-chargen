@@ -60,7 +60,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "depot_production"
+  # config.active_job.queue_name_prefix = "cod_chargen_production"
 
   config.action_mailer.perform_caching = false
 
@@ -112,9 +112,6 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  # Required by Devise
+  # For Devise
   config.action_mailer.default_url_options = { host: 'cod-chargen.kryptykphysh.uk', port: 80 }
-
-  # Because we don't have secrets.yml in source control
-  config.secret_key_base = ENV['SECRET_KEY_BASE']
 end

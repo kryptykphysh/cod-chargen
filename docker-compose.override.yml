@@ -32,6 +32,17 @@ services:
       - ./wait_scripts:/wait
       # You can't share the tmp volume over two different machines
       # - web_tmp:/usr/src/app/tmp
+  # webpacker:
+  #   build: .
+  #   environment:
+  #     - NODE_ENV=development
+  #     - RAILS_ENV=development
+  #     - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+  #   command: ./bin/webpack-dev-server
+  #   volumes:
+  #     - .:/webpacker-example-app
+  #   ports:
+  #     - '3035:3035'
 volumes:
   db_data:
   gem_cache:

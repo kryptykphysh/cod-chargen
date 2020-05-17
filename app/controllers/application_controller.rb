@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
-# Parent for all other controllers
+# ApplicationController is inherited by all other controllers
 class ApplicationController < ActionController::Base
+  def new_session_path(_scope)
+    new_user_session_path
+  end
 end

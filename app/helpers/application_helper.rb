@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-# Parent for all other helpers
+# ApplicationHelper is the top level helper available to all views
 module ApplicationHelper
 end
